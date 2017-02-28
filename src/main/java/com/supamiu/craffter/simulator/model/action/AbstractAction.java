@@ -40,8 +40,6 @@ public abstract class AbstractAction {
      * @return Are the requirements met?
      */
     public boolean meetsRequirements(Synthesis synthesis) {
-        /*TODO
-        */
         return true;
     }
 }
