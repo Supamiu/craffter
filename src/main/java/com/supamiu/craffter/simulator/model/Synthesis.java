@@ -1,5 +1,8 @@
 package com.supamiu.craffter.simulator.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author Supamiu.
  *         <p>
@@ -7,6 +10,8 @@ package com.supamiu.craffter.simulator.model;
  *         and the global progression of the synthesis itself.
  */
 public class Synthesis {
+
+    private List<AbstractBuff> buffs;
 
     /**
      * The current state of the synthesis
@@ -39,6 +44,10 @@ public class Synthesis {
      */
     private Recipe recipe;
 
+    public Synthesis() {
+        buffs = new ArrayList<>();
+    }
+
     /**
      * Checks if the synthesis can go further
      * (if it is not broken and the current progression is below the max progression).
@@ -65,4 +74,7 @@ public class Synthesis {
                 - Math.pow(0.1426469573 * x, 2) + 5.6122722959 * x - 5.5950384565);
     }
 
+    public List<AbstractBuff> getBuffs() {
+        return buffs;
+    }
 }
