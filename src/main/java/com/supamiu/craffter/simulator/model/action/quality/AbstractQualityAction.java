@@ -5,5 +5,5 @@ package com.supamiu.craffter.simulator.model.action.quality;
  *         <p>
  *         This is the parent of every quality actions.
  */
-public class AbstractQualityAction {
+public abstract class AbstractQualityAction {
 }
