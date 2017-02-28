@@ -9,6 +9,9 @@ import com.supamiu.craffter.simulator.model.Rotation;
  */
 public class Simulator {
 
+    /**
+     * The current rotation to simulate.
+     */
     private Rotation rotation;
 
     public Simulator(Rotation rotation){

@@ -1,5 +1,7 @@
 package com.supamiu.craffter.simulator.model;
 
+import com.supamiu.craffter.simulator.model.action.AbstractAction;
+
 import java.util.List;
 
 /**
@@ -9,14 +11,25 @@ import java.util.List;
  */
 public class Rotation {
 
+    /**
+     * The genome that created this rotation.
+     */
     private Genome genome;
 
-    private List<Action> actions;
+    /**
+     * The list of actions parsed from the genome.
+     */
+    private List<AbstractAction> actions;
 
     public Rotation(Genome genome) {
         this.genome = genome;
     }
 
+    /**
+     * Simple getter for the genome, as we don't want it to be changed during the rotation.
+     *
+     * @return the current genome.
+     */
     public Genome getGenome() {
         return this.genome;
     }
