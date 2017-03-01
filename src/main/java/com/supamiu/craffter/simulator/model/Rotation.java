@@ -33,4 +33,13 @@ public class Rotation {
     public Genome getGenome() {
         return this.genome;
     }
+
+    /**
+     * Simple getter for the list of actions, as we don't want it to be changed during the rotation.
+     *
+     * @return the current list of actions parsed from the genome.
+     */
+    public List<AbstractAction> getActions() {
+        return actions;
+    }
 }

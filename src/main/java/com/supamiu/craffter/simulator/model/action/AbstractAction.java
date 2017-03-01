@@ -1,5 +1,6 @@
 package com.supamiu.craffter.simulator.model.action;
 
+import com.supamiu.craffter.simulator.model.Stats;
 import com.supamiu.craffter.simulator.model.Synthesis;
 
 /**
@@ -32,14 +33,32 @@ public abstract class AbstractAction {
     public abstract int getSuccessRate();
 
     /**
-     * This is a method that checks if the synthesis meets the requirements of the action
+     * Method used to use the current action on a given synthesis state, returning the next state of the synthesis.
+     *
+     * @param synthesis The synthesis to use the action on.
+     * @return The synthesis after the action.
+     */
+    public abstract Synthesis use(Stats stats, Synthesis synthesis);
+
+    /**
+     * This is a method that checks if the synthesis meets the requirements of the action.
+     *
+     * @param synthesis The current synthesis state
+     * @return Are the requirements met?
+     */
+    public final boolean meetsRequirements(Synthesis synthesis) {
+        return synthesis.getStats().getCurrentCP() >= this.getCost() && this.meetsRequirementsImpl(synthesis);
+    }
+
+    /**
+     * This method is used in case you need to add another layer on top of the base requirements.
      * It should return true in this class, this way there's no requirements, but if you need to implement one,
      * you have this method.
      *
      * @param synthesis The current synthesis state
      * @return Are the requirements met?
      */
-    public boolean meetsRequirements(Synthesis synthesis) {
+    public boolean meetsRequirementsImpl(Synthesis synthesis){
         return true;
     }
 }

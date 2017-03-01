@@ -1,5 +1,7 @@
 package com.supamiu.craffter.simulator.model.action.progression;
 
+import com.supamiu.craffter.simulator.model.Stats;
+import com.supamiu.craffter.simulator.model.Synthesis;
 import com.supamiu.craffter.simulator.model.action.AbstractAction;
 
 /**
@@ -43,13 +45,19 @@ public abstract class AbstractProgressionAction extends AbstractAction {
     }
 
     @Override
-    public int getCost(){
+    public int getCost() {
         return this.cost;
     }
 
     @Override
-    public String getName(){
+    public String getName() {
         return this.name;
+    }
+
+    @Override
+    public Synthesis use(Stats stats, Synthesis synthesis) {
+        synthesis.addProgress((int) Math.floor(stats.getCraftsmanship() * 0.2148 + 1.289));
+        return synthesis;
     }
 
     public int getPotency() {

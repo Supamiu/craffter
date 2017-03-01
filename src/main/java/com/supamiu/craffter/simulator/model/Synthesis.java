@@ -11,6 +11,9 @@ import java.util.List;
  */
 public class Synthesis {
 
+    /**
+     * The current buffs applied to the synthesis.
+     */
     private List<AbstractBuff> buffs;
 
     /**
@@ -37,15 +40,30 @@ public class Synthesis {
     /**
      * The current step of the synthesis.
      */
-    private int step = 1;
+    public int step = 0;
 
     /**
      * The recipe of the current synthesis.
      */
     private Recipe recipe;
 
-    public Synthesis() {
-        buffs = new ArrayList<>();
+    /**
+     * The stats used for this synthesis.
+     */
+    private Stats stats;
+
+    public Synthesis(Stats stats, Recipe recipe) {
+        this.stats = stats;
+        this.recipe = recipe;
+        this.reset();
+    }
+
+    public void reset() {
+        this.buffs = new ArrayList<>();
+        this.quality = 0;
+        this.progress = 0;
+        this.durability = recipe.getDurability();
+        this.step = 0;
     }
 
     /**
@@ -74,7 +92,55 @@ public class Synthesis {
                 - Math.pow(0.1426469573 * x, 2) + 5.6122722959 * x - 5.5950384565);
     }
 
+    /**
+     * Adds progress to the current progression.
+     *
+     * @param progress The base progression value to add.
+     */
+    public void addProgress(int progress) {
+        this.progress += progress;
+    }
+
+    /**
+     * Adds quality to the current quality value.
+     *
+     * @param quality The base quality value to add.
+     */
+    public void addQuality(int quality) {
+        this.quality += quality;
+    }
+
+    /*********************
+     *
+     *  Getters and Setters.
+     *
+     *********************/
+
     public List<AbstractBuff> getBuffs() {
         return buffs;
+    }
+
+    public Stats getStats() {
+        return stats;
+    }
+
+    public Condition getCondition() {
+        return condition;
+    }
+
+    public int getDurability() {
+        return durability;
+    }
+
+    public int getProgress() {
+        return progress;
+    }
+
+    public int getQuality() {
+        return quality;
+    }
+
+    public Recipe getRecipe() {
+        return recipe;
     }
 }

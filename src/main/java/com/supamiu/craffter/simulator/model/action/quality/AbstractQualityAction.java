@@ -1,5 +1,7 @@
 package com.supamiu.craffter.simulator.model.action.quality;
 
+import com.supamiu.craffter.simulator.model.Stats;
+import com.supamiu.craffter.simulator.model.Synthesis;
 import com.supamiu.craffter.simulator.model.action.AbstractAction;
 
 /**
@@ -49,6 +51,12 @@ public abstract class AbstractQualityAction extends AbstractAction{
     @Override
     public String getName(){
         return this.name;
+    }
+
+    @Override
+    public Synthesis use(Stats stats, Synthesis synthesis) {
+        synthesis.addQuality((int) Math.floor(stats.getControl() * 0.37 + 32.6));
+        return synthesis;
     }
 
     public int getPotency() {
