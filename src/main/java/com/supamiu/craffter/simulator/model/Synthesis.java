@@ -1,5 +1,8 @@
 package com.supamiu.craffter.simulator.model;
 
+import com.supamiu.craffter.simulator.engine.BuffEngine;
+import com.supamiu.craffter.simulator.model.buff.AbstractBuff;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +13,8 @@ import java.util.List;
  *         and the global progression of the synthesis itself.
  */
 public class Synthesis {
+
+    private BuffEngine buffEngine;
 
     /**
      * The current buffs applied to the synthesis.
@@ -64,6 +69,7 @@ public class Synthesis {
         this.progress = 0;
         this.durability = recipe.getDurability();
         this.step = 0;
+        this.buffEngine = new BuffEngine();
     }
 
     /**
